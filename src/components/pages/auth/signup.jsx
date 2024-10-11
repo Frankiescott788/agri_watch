@@ -11,7 +11,7 @@ const Signup = () => {
                <Image src={Logo} alt="logo" className="w-[10rem]" />
                <p className="text-2xl mt-5">Create an <span className="text-[#70e000]">Account</span> </p>
             </div>
-            <div className="grid grid-cols-12 gap-5">
+            <div className="grid grid-cols-12 gap-5 ">
                 <div className="col-span-5">
                     <div className="mt-[8rem]">
                         <Input label="First Name" onChange={e => setFirstName(e.target.value)}/>

@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { auth, db } from '../firebase/config';
 import { addDoc, collection } from 'firebase/firestore';
@@ -40,6 +40,21 @@ export default function useAuth() {
         }
     }
 
+    const sign_in = async () => {
+        try {
+            setIsLoading(true);
+            const auth_user = await signInWithEmailAndPassword(auth, email, password);
+            const user_id = auth_user.user?.uid;
+            if(user_id.length > 0) {
+                console.log('User signed in successfully')
+            }
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     return {
         firstName,
         setFirstName,
@@ -57,6 +72,7 @@ export default function useAuth() {
         setLocation,
         isLoading,
         setIsLoading,
-        sign_up
+        sign_up,
+        sign_in
     }
 }
