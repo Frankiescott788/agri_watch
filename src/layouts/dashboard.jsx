@@ -9,11 +9,13 @@ import {
 import { useContext, useEffect } from "react";
 import { Authcontext } from "../context/Authprovider";
 import Logo from "../assets/logo.png";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const DashboardLayout = () => {
   const { currentUser } = useContext(Authcontext);
-
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+    // #9ca3af
   return (
     <>
       <aside className="w-[15rem] fixed top-0 bottom-0 left-0 border-e">
@@ -22,14 +24,14 @@ const DashboardLayout = () => {
             <Image src={Logo} className="w-[14rem]" />
           </div>
           <ul className="text-center mx-2 pt-4">
-            <li className="flex gap-1 bg-[#70e000] px-3 py-2 rounded-md">
+            <li className={`flex gap-1 mb-2 cursor-pointer ${ pathname === '/dashboard' ? "bg-[#70e000] text-white" : "text-[#9ca3af]"} px-3 py-2 rounded-md`} onClick={() => navigate('/dashboard')}>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width={24}
                   height={24}
-                  color={"white"}
+                  color={pathname === "/dashboard" ? "white" : "#9ca3af"}
                   fill={"none"}
                 >
                   <path
@@ -54,16 +56,16 @@ const DashboardLayout = () => {
                   />
                 </svg>
               </div>
-              <div className="text-white">Dashboard</div>
+              <div>Dashboard</div>
             </li>
-            <li className="flex gap-1 px-3 py-2 rounded-md my-2">
+            <li className={`flex gap-1 mb-2 cursor-pointer ${ pathname === '/dashboard/weather' ? "bg-[#70e000] text-white" : "text-[#9ca3af]"} px-3 py-2 rounded-md`} onClick={() => navigate('/dashboard/weather')}>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="20"
                   height="20"
-                  color="#9ca3af"
+                  color={pathname === "/dashboard/weather" ? "white" : "#9ca3af"}
                   fill="none"
                 >
                   <path
@@ -80,16 +82,16 @@ const DashboardLayout = () => {
                   />
                 </svg>
               </div>
-              <div className="text-[#9ca3af]">Weather</div>
+              <div>Weather</div>
             </li>
-            <li className="flex gap-1 px-3 py-2 rounded-md my-2">
+            <li className={`flex gap-1 mb-2 cursor-pointer ${ pathname === '/dashboard/map' ? "bg-[#70e000] text-white" : "text-[#9ca3af]"} px-3 py-2 rounded-md`} onClick={() => navigate('/dashboard/map')}>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width={20}
                   height={20}
-                  color={"#9ca3af"}
+                  color={pathname === "/dashboard/map" ? "white" : "#9ca3af"}
                   fill={"none"}
                 >
                   <path
@@ -104,16 +106,16 @@ const DashboardLayout = () => {
                   />
                 </svg>
               </div>
-              <div className="text-[#9ca3af]">Map Intelligence</div>
+              <div className="">Map Intelligence</div>
             </li>
-            <li className="flex gap-1 px-3 py-2 rounded-md my-2">
+            <li className={`flex gap-1 mb-2 cursor-pointer ${ pathname === '/dashboard/agribot' ? "bg-[#70e000] text-white" : "text-[#9ca3af]"} px-3 py-2 rounded-md`} onClick={() => navigate('/dashboard/agribot')}>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width={20}
                   height={20}
-                  color={"#9ca3af"}
+                  color={pathname === "/dashboard/agribot" ? "white" : "#9ca3af"}
                   fill={"none"}
                 >
                   <path
@@ -145,12 +147,12 @@ const DashboardLayout = () => {
                   />
                 </svg>
               </div>
-              <div className="text-[#9ca3af]">Ask AI</div>
+              <div className="">Ask Agribot</div>
             </li>
           </ul>
         </section>
       </aside>
-      <nav className="fixed top-0 right-0 left-0 ms-[15rem] border-b py-3 px-5 flex justify-between">
+      <nav className="fixed top-0 right-0 left-0 ms-[15rem] border-b py-3 px-5 flex justify-between bg-[white] z-20">
         <div className="pt-3">
           <Breadcrumbs>
             <BreadcrumbItem>Dashboard</BreadcrumbItem>

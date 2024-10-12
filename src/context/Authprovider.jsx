@@ -19,10 +19,8 @@ export default function Authprovider({ children }) {
           );
           const querySnapshot = await getDocs(q);
           querySnapshot.forEach((doc) => {
-            console.log(doc.data());
             setCurrentUser(doc.data());
             setIsAuthenticated(true);
-            console.log(doc.data());
           });
         }
       });
