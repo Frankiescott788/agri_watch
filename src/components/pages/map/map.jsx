@@ -97,56 +97,138 @@ const farmerLocations = [
 ];
 
 const FarmerMap = () => {
-  return (
-    <div style={{ padding: "20px" }}>
-      <div className="grid grid-cols-12 gap-5">
-        <div className="col-span-8">
-          <h1>Farmer Mapping Intelligence</h1>
-          <Card>
-          <MapContainer
-            center={[-22.9518, 30.4711]}
-            zoom={18}
-            zoomControl={false} // Disable zoom control buttons
-            style={{ height: "500px", width: "100%" }}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {farmerLocations.map((farmer, index) => (
-              <Marker key={index} position={farmer.location} icon={defaultIcon}>
-                <Popup>
-                  <h2>{farmer.name}</h2>
-                  <p>Address: {farmer.address}</p>
-                  <p>Crops: {farmer.crops.join(", ")}</p>
-                  <p>Status: <span className={`${farmer.status === 'Healthy' ? 'bg-green-200 text-green-500' : 'bg-red-200 text-red-500'} text-tiny px-1 rounded-full`}>{farmer.status}</span></p>
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
-          </Card>
-        </div>
-        <div className="col-span-4">
-          <Table aria-label="Example static collection table">
-            <TableHeader>
-              <TableColumn>Location</TableColumn>
-              <TableColumn>Crops</TableColumn>
-              <TableColumn>STATUS</TableColumn>
-            </TableHeader>
-            <TableBody>
-                {farmerLocations.map((farm, i ) => (
-                     <TableRow key={i}>
-                     <TableCell>{farm.name}</TableCell>
-                     <TableCell>{farm.crops.join(", ")}</TableCell>
-                     <TableCell><p className={`${farm.status === 'Healthy' ? 'bg-green-200 text-green-500' : 'bg-red-200 text-red-500'} text-tiny px-1 rounded-full`}> {farm.status} </p></TableCell>
-                   </TableRow>
+    // Coordinates for 10 farms arranged in a square-like pattern
+    const farmerLocations = [
+      {
+        name: "Laberry Farm",
+        address: "66 Shuma St, Block J, Thohoyandou, 0950",
+        location: [-22.9518, 30.4711], // Top-left
+        crops: ["Maize", "Potatoes", "Spinach"],
+        status: "Healthy",
+      },
+      {
+        name: "Nearby Farm 1",
+        address: "Thohoyandou, 0950",
+        location: [-22.9518, 30.4716], // Top-center
+        crops: ["Tomatoes", "Onions"],
+        status: "Danger",
+      },
+      {
+        name: "Nearby Farm 2",
+        address: "Thohoyandou, 0950",
+        location: [-22.9518, 30.4721], // Top-right
+        crops: ["Carrots", "Cabbage"],
+        status: "Healthy",
+      },
+      {
+        name: "Nearby Farm 3",
+        address: "Thohoyandou, 0950",
+        location: [-22.9523, 30.4711], // Middle-left
+        crops: ["Beans", "Peas"],
+        status: "Danger",
+      },
+      {
+        name: "Nearby Farm 4",
+        address: "Thohoyandou, 0950",
+        location: [-22.9523, 30.4716], // Middle-center
+        crops: ["Pumpkins", "Squash"],
+        status: "Healthy",
+      },
+      {
+        name: "Nearby Farm 5",
+        address: "Thohoyandou, 0950",
+        location: [-22.9523, 30.4721], // Middle-right
+        crops: ["Lettuce", "Zucchini"],
+        status: "Healthy",
+      },
+      {
+        name: "Nearby Farm 6",
+        address: "Thohoyandou, 0950",
+        location: [-22.9528, 30.4711], // Bottom-left
+        crops: ["Radishes", "Kale"],
+        status: "Danger",
+      },
+      {
+        name: "Nearby Farm 7",
+        address: "Thohoyandou, 0950",
+        location: [-22.9528, 30.4716], // Bottom-center
+        crops: ["Garlic", "Onions"],
+        status: "Healthy",
+      },
+      {
+        name: "Nearby Farm 8",
+        address: "Thohoyandou, 0950",
+        location: [-22.9528, 30.4721], // Bottom-right
+        crops: ["Beets", "Chard"],
+        status: "Danger",
+      },
+      {
+        name: "Nearby Farm 9",
+        address: "Thohoyandou, 0950",
+        location: [-22.9515, 30.4711], // Extra farm for a more compact arrangement
+        crops: ["Eggplants", "Bell Peppers"],
+        status: "Healthy",
+      },
+    ];
+  
+    return (
+      <div style={{ padding: "20px" }}>
+        <div className="grid grid-cols-12 gap-5">
+          <div className="col-span-8">
+            <h1 className="text-2xl">Farmer Mapping <span className="text-[#6a994e]">Intelligence</span></h1>
+            <p className="text-gray-400 mb-4">Visualize and Monitor Farm Health and Crop Status</p>
+            <Card>
+              <MapContainer
+                center={[-22.9518, 30.4716]} // Center the map
+                zoom={18}
+                zoomControl={false} // Disable zoom control buttons
+                style={{ height: "500px", width: "100%" }}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {farmerLocations.map((farmer, index) => (
+                  <Marker key={index} position={farmer.location} icon={defaultIcon}>
+                    <Popup>
+                      <h2>{farmer.name}</h2>
+                      <p>Address: {farmer.address}</p>
+                      <p>Crops: {farmer.crops.join(", ")}</p>
+                      <p>Status: <span className={`${farmer.status === 'Healthy' ? 'bg-green-200 text-green-500' : 'bg-red-200 text-red-500'} text-tiny px-1 rounded-full`}>{farmer.status}</span></p>
+                    </Popup>
+                  </Marker>
                 ))}
-            </TableBody>
-          </Table>
+              </MapContainer>
+            </Card>
+          </div>
+          <div className="col-span-4">
+            <Table aria-label="Example static collection table">
+              <TableHeader>
+                <TableColumn>Location</TableColumn>
+                <TableColumn>Crops</TableColumn>
+                <TableColumn>STATUS</TableColumn>
+              </TableHeader>
+              <TableBody>
+                {farmerLocations.map((farm, i) => (
+                  <TableRow key={i}>
+                    <TableCell>{farm.name}</TableCell>
+                    <TableCell>{farm.crops.join(", ")}</TableCell>
+                    <TableCell>
+                      <p className={`${farm.status === 'Healthy' ? 'bg-green-200 text-green-500' : 'bg-red-200 text-red-500'} text-tiny px-1 rounded-full`}>
+                        {farm.status}
+                      </p>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
+  export default FarmerMap;
+  
+  
 
-export default FarmerMap;

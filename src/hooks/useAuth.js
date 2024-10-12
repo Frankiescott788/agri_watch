@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import { useState } from 'react';
 import { auth, db } from '../firebase/config';
 import { addDoc, collection } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 export default function useAuth() {
     const [firstName, setFirstName] = useState('');
@@ -12,6 +13,8 @@ export default function useAuth() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [location, setLocation] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     const sign_up = async () => {
         try {
@@ -47,6 +50,7 @@ export default function useAuth() {
             const user_id = auth_user.user?.uid;
             if(user_id.length > 0) {
                 console.log('User signed in successfully')
+                navigate('/dashboard')
             }
         } catch (error) {
             console.log(error)

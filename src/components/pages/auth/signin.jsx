@@ -5,7 +5,7 @@ import {
   Image,
   Input,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "./../../../assets/logo.png";
 import useAuth from "../../../hooks/useAuth";
 
