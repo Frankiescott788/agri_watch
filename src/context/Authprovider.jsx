@@ -1,33 +1,49 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export const Authcontext = createContext();
-export default function Authprovider ({children}) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+export default function Authprovider({ children }) {
+  const [currentUser, setCurrentUser] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        try {
-            setIsLoading(true)
-            onAuthStateChanged(auth, (user) => {
-                if(user.uid !== undefined) {
-                    setCurrentUser(user);
-                    setIsAuthenticated(true);
-                    console.log('User signed in successfully')
-                }
-            })    
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setIsLoading(false)
+  useEffect(() => {
+    try {
+      onAuthStateChanged(auth, async (user) => {
+        if (user.uid !== undefined) {
+          const q = query(
+            collection(db, "users"),
+            where("_id", "==", user.uid)
+          );
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+            setCurrentUser(doc.data());
+            setIsAuthenticated(true);
+            console.log(doc.data());
+          });
         }
-        
-    }, []);
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
-    <Authcontext.Provider value={{currentUser, setCurrentUser, setIsAuthenticated, isAuthenticated, isLoading}}>
-        {children}
+  return (
+    <Authcontext.Provider
+      value={{
+        currentUser,
+        setCurrentUser,
+        setIsAuthenticated,
+        isAuthenticated,
+        isLoading,
+      }}
+    >
+      {children}
     </Authcontext.Provider>
-
+  );
 }
