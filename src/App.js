@@ -8,6 +8,7 @@ import DashboardLayout from "./layouts/dashboard";
 import Overview from "./components/pages/overview/overview";
 import FarmerMap from "./components/pages/map/map";
 import Chatbot from "./components/pages/chatbot/chatbot";
+import Home from "./components/pages/home/home";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
   return isLoading ? <p>Loading...</p> : (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />}/>
         <Route path="/dashboard/*" element={<DashboardLayout />}>
           <Route index element={<Overview />}/>
           <Route path="map" element={<FarmerMap />}/>

@@ -58,7 +58,7 @@ const Overview = () => {
     setLoadingSummary(true);
     const prompt = `Summarize the following weather data: ${JSON.stringify(
       weather
-    )}, and give the farmer tips on how to manage their crops. after summarizing the weather tell the farmer what the weather is good for and what not good for according to the plants they are growing, then advise the farmer what it can do to make the crops that are affecting negatively more positive and also only give four tips each in only 15 words, remember only tips, just summarize as if you know the information about the user's crops, just mention fictional spots around the farm. make it less than 30 words `;
+    )}, and give the farmer tips on how to manage their crops. after summarizing the weather tell the farmer what the weather is good for and what not good for according to the plants they are growing, then advise the farmer what it can do to make the crops that are affecting negatively more positive and also only give four tips each in only 15 words, remember only tips, just summarize as if you know the information about the user's crops, just mention fictional spots around the farm. make it less than 30 words, do not include any weather conditions from the json just advice`;
 
     try {
       const result = await model.generateContent(prompt);
@@ -304,8 +304,7 @@ const Overview = () => {
             </div>
           </div>
         </Card>
-        <Card className="col-spam-6">r</Card>
-        <Card className="col-span-3 absolute right-0 w-[20rem] mx-2 h-[30rem]">
+        <Card className="col-span-3 absolute right-0 w-[20rem] mx-2 h-[30rem] animate__animated animate__fadeIn">
           <div className="border-b p-2">
             <User
               name={"Weather summary overview"}
@@ -340,7 +339,7 @@ const Overview = () => {
         </Card>
       </div>
       <div className="grid grid-cols-12">
-        <Card className="col-span-9 p-3 mx-4">
+        <Card className="col-span-9 p-3 mx-4 animate__animated animate__fadeIn">
           <p className="text-gray-400"> Farm Analystics </p>
           <FarmLineGraph />
         </Card>
