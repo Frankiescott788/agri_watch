@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Agri Watch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+Agri Watch was presented at the Limpopo 3rd Annual Varsity Hackathon, hosted by the University of Venda, University of Limpopo, and Tshwane University of Technology. While the project received strong feedback and recognition for its innovative approach to transforming the agricultural sector, it did not take home the win.
 
-## Available Scripts
+The application combines Artificial Intelligence and IoT with traditional farming practices, providing farmers with tools such as crop monitoring, weather integration, pest and disease alerts, and resource management to optimize farming processes and promote sustainability.
 
-In the project directory, you can run:
+### Objective
+To bridge the gap between modern technology and traditional farming practices, making agriculture smarter, more efficient, and sustainable.
 
-### `npm start`
+## Features
+- **Crop Monitoring:** Provides real-time updates on crop health using satellite imagery and sensor data.
+- **Weather Integration:** Displays hyper-local weather forecasts to help farmers make informed decisions about planting and harvesting.
+- **Pest and Disease Alerts:** AI-driven alerts to warn farmers about potential pest infestations or crop diseases.
+- **Resource Management:** Tracks the usage of water, fertilizers, and other resources to ensure sustainable farming practices.
+- **Predictive Analytics:** Uses AI models to predict crop yields based on current conditions and historical data.
+- **Community Forums:** A platform for farmers to share experiences, solutions, and farming techniques.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Firebase
+- **Other Tools:**
+  - TypeScript for type safety
+  - Leaflet.js for interactive mapping
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
+To run Agri Watch locally, follow these steps:
 
-### `npm test`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/username/agri-watch.git
+   cd agri-watch
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Access the application at `http://localhost:5173`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How It Works
+1. **Sign Up:** Farmers register on the platform to access tailored services.
+2. **Add Farm Details:** Input details about their farm, including location, crops, and size.
+3. **Monitor and Manage:** Use real-time data to monitor crops, manage resources, and receive actionable insights.
+4. **Collaborate:** Connect with other farmers and share best practices via community forums.
 
-### `npm run build`
+## Impact
+Agri Watch aims to:
+- Enhance agricultural productivity.
+- Promote sustainable farming practices.
+- Provide actionable data to empower decision-making.
+- Connect farmers with a supportive community.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
